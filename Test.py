@@ -1,1 +1,0 @@
-print("Damm i kylaren")

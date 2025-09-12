@@ -85,12 +85,9 @@ def practice_seven():
     switch_probability = []
 
     for N in number_of_iterations:
-        # Count how many times the player's random choice matches the prize door over N games.
-        # sum(1 for _ in range(N) if ...) adds 1 for each win, giving total wins for "stay" strategy.
         stay_wins = sum(1 for _ in range(N) if random.randint(0,2) == random.randint(0,2))
         stay_probability.append(stay_wins / N)
-        # Total wins when player switches: add 1 each time the player's choice != prize door.
-        # sum(1 for _ in range(N) if ...) counts wins for the "switch" strategy.
+
         switch_wins = sum(1 for _ in range(N) if random.randint(0,2) != random.randint(0,2))
         switch_probability.append(switch_wins / N)
         

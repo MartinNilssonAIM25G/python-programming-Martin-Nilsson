@@ -4,7 +4,6 @@ def practice_one():
     i = -10
 
     while i <= 10:
-        
         i += 1
 
 def practice_two_a():

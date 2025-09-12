@@ -93,6 +93,32 @@ def practice_four():
             print(f"Thanks for playing!, you got {score} correct guesses")
             break
 
+def practice_five_a():
+    sum = 1
+    term = 1/2
+    n = 20
+    i = 0
+
+    while i < n:
+        sum = sum + term
+        term = term/2
+        print(sum)
+        i += 1
+
+def practice_five_b():
+    sum = 1
+    denom = 3
+    sign = -1
+    term = 1 / denom
+
+    while term > 1e-6:
+        sum += sign * term
+        denom += 2
+        sign = -sign
+        term = 1 / denom
+        print(sum)
+      
+
 
 if __name__ == "__main__":
-    practice_three_b()
+    practice_five_b()

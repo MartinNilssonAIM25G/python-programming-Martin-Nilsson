@@ -44,6 +44,7 @@ def euclidean_distance_3D():
     p1x, p1y, p1z = 2,1,4
     p2x, p2y, p2z = 3,1,0
 
+
     print(f"The distance is around {round(math.sqrt((p2x-p1x)**2 + (p2y - p1y)**2 + (p2z - p1z)**2), 2)}")
 
 if __name__ == "__main__":

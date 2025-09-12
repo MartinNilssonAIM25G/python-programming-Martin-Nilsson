@@ -31,7 +31,6 @@ def practice_three_a():
     attempts = 0
     print(target)
     
-
     while True:
         guess = int(input("Welcome to guess the numbers game, guess on a number between 1 - 100 and we'll see how close you get and in how many guesses "))
         attempts += 1

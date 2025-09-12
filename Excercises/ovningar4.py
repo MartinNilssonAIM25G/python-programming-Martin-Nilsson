@@ -14,7 +14,6 @@ def practice_five_a():
     hundred_dice = [random.randint(1, 6) for x in range(1, 101)]
     print(f"{hundred_dice.count(6)} var antalet 6or och {hundred_dice} är den fulla listan, antal entries var {len(hundred_dice)}")
 
-
     for sixes in list:
         result = round(sixes / iterations, 4)
 
@@ -105,6 +104,7 @@ def practice_seven():
     plt.legend()
     plt.grid(True)   
     plt.show()
+
 
 if __name__ == "__main__":
     practice_seven()

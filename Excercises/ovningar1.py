@@ -94,5 +94,6 @@ def practice_six():
             print("Were sorry, but this luggage will not be traveling with us tonight. ")    
 
 
+
 if __name__ == "__main__":
     practice_six()

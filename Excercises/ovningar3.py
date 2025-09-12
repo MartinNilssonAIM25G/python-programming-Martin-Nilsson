@@ -59,7 +59,7 @@ def practice_five():
         elif guess > target:
             print("Please guess lower ")
         else:
-            print(f"Correct! {target} was the correct number and you did it in {attempts} attempts")
+            print(f"Correct! {target} was the correct number")
             break
 
 
@@ -69,7 +69,6 @@ def practice_six():
     for i in range(64):
         total_grain += grain
         grain *= 2
-
     print(total_grain)    
 
 if __name__ == "__main__":

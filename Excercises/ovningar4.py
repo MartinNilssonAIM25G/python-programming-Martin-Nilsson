@@ -59,8 +59,8 @@ def practice_five_bb():
 
 def practice_six():
     iterations = 5000
-    x_points = [random.uniform(-1,1) for _ in range (iterations)]
-    y_points = [random.uniform(-1,1) for _ in range (iterations)]
+    x_points = [random.uniform(-1,1) for _ in range(iterations)]
+    y_points = [random.uniform(-1,1) for _ in range(iterations)]
     distance = [math.sqrt(x_points[i]**2 + y_points[i]**2) for i in range(iterations)]
     colors = ['green' if distance[i] <= 1 else 'purple' for i in range(iterations)]
     inside_circle = 0

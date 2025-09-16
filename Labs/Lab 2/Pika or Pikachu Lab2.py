@@ -1,12 +1,14 @@
 import csv
+import matplotlib.pyplot as plt
+import math
 
-def load_data_from_file():
+def load_data_from_file(filename):
     data_lines = []
     try:
-        with open('datapoints.txt') as csv_file:
+        with open(filename) as csv_file:
             data_lines = list(csv.reader(csv_file, delimiter=","))
     except FileNotFoundError:
-        print("The file datapoints.txt does not exist") 
+        print(f"The file {filename} does not exist") 
         return []
     return data_lines           
         
@@ -21,22 +23,23 @@ def parse_data(data_lines):
             except ValueError:
                 skipped_rows.append(row)
                 continue
-    return features, labels, skipped_rows            
+    return features, labels, skipped_rows
+
+def plot_data(features, labels):
+    x_points = [width for width, height in features]
+    y_points = [height for width, height in features]
+    distance = [math.sqrt(x_points[i]**2 + y_points[i]**2) for i in range(len(features))]
+    colors = ['green' if label == 0 else 'black' for label in labels]
+
+    plt.title("Pica or Pikachu Lab 2")
+    plt.scatter(x_points, y_points, c=colors)
+    plt.show()
+
 
 def main():
-    data_lines = load_data_from_file()
+    data_lines = load_data_from_file("datapoints.txt")
     features, labels, skipped_rows = parse_data(data_lines)
-
-    print("Features:")
-    for f in features:
-        print(f)
-
-    print("Labels:")
-    print(labels)
-
-    print("Skipped rows:")
-    for row in skipped_rows:
-        print(row)
+    plot_data(features, labels)
 
 if __name__ == "__main__":
     main()

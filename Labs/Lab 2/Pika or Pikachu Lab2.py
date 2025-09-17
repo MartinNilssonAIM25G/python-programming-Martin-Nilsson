@@ -1,29 +1,39 @@
-import csv
 import matplotlib.pyplot as plt
 import math
 
+DATA_PATH = "datapoints.txt"
+TEST_PATH = "testpoints.txt"
+
 def load_data_from_file(filename):
-    data_lines = []
     try:
-        with open(filename) as csv_file:
-            data_lines = list(csv.reader(csv_file, delimiter=","))
+        with open(filename, "r") as file:
+            return file.readlines()
     except FileNotFoundError:
-        print(f"The file {filename} does not exist") 
-        return []
-    return data_lines           
+        print(f"The file {filename} does not exist")
+        return []           
         
-def parse_data(data_lines):
+def parse_data(data_lines, test=False):
     features = []
     labels = []
     skipped_rows = []
+
     for row in data_lines:
-            try:
-                features.append([float(row[0]), float(row[1])])
-                labels.append(int(row[2]))
-            except ValueError:
-                skipped_rows.append(row)
-                continue
-    return features, labels, skipped_rows
+        try:
+            row = row.strip()
+            if test:
+                start = row.index("(")
+                end = row.index(")")
+                width_str, height_str = row[start+1:end].split(",")
+                features.append([float(width_str.strip()), float(height_str.strip())])
+            else:
+                width_str, height_str, label_str = row.split(",")
+                features.append([float(width_str), float(height_str)])
+                labels.append(int(label_str))
+        except Exception:
+            skipped_rows.append(row)
+            continue
+
+    return features, labels, skipped_rows             
 
 def plot_data(features, labels):
     x_points = [width for width, height in features]
@@ -37,9 +47,17 @@ def plot_data(features, labels):
 
 
 def main():
-    data_lines = load_data_from_file("datapoints.txt")
-    features, labels, skipped_rows = parse_data(data_lines)
+    # Real data
+    train_lines = load_data_from_file(DATA_PATH)
+    features, labels, skipped = parse_data(train_lines)
     plot_data(features, labels)
+
+    # Test data
+    test_lines = load_data_from_file(TEST_PATH)
+    test_features, _, skipped_test = parse_data(test_lines, test=True)
+    print(f"Test points: {test_features}")
+    print(f"Skipped rows (test): {skipped_test}")
+    
 
 if __name__ == "__main__":
     main()

@@ -4,7 +4,9 @@ def practice_one():
     i = -10
 
     while i <= 10:
+        print(i, end=" ")
         i += 1
+        
 
 def practice_two_a():
     i = 0
@@ -19,11 +21,11 @@ def practice_two_b():
     i = 1
     x = 0
 
-    while i <= 99:
+    while i < 100:
         x += i
         i += 2 
-        print(x, end=" ")
-                
+        
+    print(x, end=" ")            
 
 def practice_three_a():
     target = random.randint(1,100)
@@ -119,4 +121,4 @@ def practice_five_b():
 
 
 if __name__ == "__main__":
-    practice_five_b()
+    practice_five_a()
